@@ -22,7 +22,6 @@ async def main():
 
     tg_group = await bot.get_input_entity(tg_group)
     print('bot starting', file=sys.stderr)
-    await bot.send_message(tg_group, 'bot starting')
 
     logs = await asyncio.create_subprocess_exec('./log_watch.py', stdout=subprocess.PIPE)
 
