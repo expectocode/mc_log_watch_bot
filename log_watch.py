@@ -2,7 +2,7 @@
 import sys
 from inotify_simple import INotify, flags
 
-LOG_DIR = '/tmp/logs' # FIX~ME
+LOG_DIR = '/srv/papermc/logs'
 LATEST_LOG = f'{LOG_DIR}/latest.log'
 
 class McDirWatcher:
