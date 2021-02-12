@@ -1,27 +1,30 @@
 #!/usr/bin/env python3
+'''
+Bot to send messages to a chat whenever people join or leave a Minecraft server.
+'''
 import asyncio
 from asyncio import subprocess
 import re
 import os
 import sys
 
-from telethon import TelegramClient, events
+from telethon import TelegramClient
 
 JOINLEAVE = re.compile(r'.(........)...Server thread/INFO\]: (\w+) (joined|left) the game')
 
 async def main():
-    token = os.environ["bot_token"]
-    tg_group = int(os.environ["chat_id"])
-    server_name = os.environ["server_name"]
+    token = os.environ['bot_token']
+    tg_group = int(os.environ['chat_id'])
+    server_name = os.environ['server_name']
 
-    bot = TelegramClient('minecraftlogbot', 1, "b6b154c3707471f5339bd661645ed3d6")
+    bot = TelegramClient('minecraftlogbot', 1, 'b6b154c3707471f5339bd661645ed3d6')
     await bot.start(bot_token=token)
 
     tg_group = await bot.get_input_entity(tg_group)
-    print("bot starting", file=sys.stderr)
-    await bot.send_message(tg_group, "bot starting")
+    print('bot starting', file=sys.stderr)
+    await bot.send_message(tg_group, 'bot starting')
 
-    logs = await asyncio.create_subprocess_exec("./log_watch.py", stdout=subprocess.PIPE)
+    logs = await asyncio.create_subprocess_exec('./log_watch.py', stdout=subprocess.PIPE)
 
     async for line in logs.stdout:
         line = line.decode()

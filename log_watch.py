@@ -53,5 +53,5 @@ def main():
 
 
 if __name__ == '__main__':
-    print("Log watcher starting...", file=sys.stderr)
+    print('Log watcher starting...', file=sys.stderr)
     main()
