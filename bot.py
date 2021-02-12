@@ -30,7 +30,7 @@ async def main():
             print(time, user, action)
             await bot.send_message(
                 tg_group,
-                f'{user} {action} {server_name} ({time})'
+                f'{user} {action} {server_name}'
             )
 
 
