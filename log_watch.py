@@ -48,10 +48,11 @@ class McLatestLog:
                 yield from self.cur_log
 
 def main():
-    for line in McLatestLog():
-        print(line, end='', flush=True)
+    print('Log watcher starting...', file=sys.stderr)
+    with McLatestLog() as log:
+        for line in log:
+            print(line, end='', flush=True)
 
 
 if __name__ == '__main__':
-    print('Log watcher starting...', file=sys.stderr)
     main()
