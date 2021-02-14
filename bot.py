@@ -44,7 +44,8 @@ async def main():
             else:
                 msg = await bot.send_message(
                     tg_group,
-                    f'{user} {action} {server_name}'
+                    f'{user} {action} {server_name}',
+                    silent=True
                 )
                 user_state[user] = (now, action, msg)
 
