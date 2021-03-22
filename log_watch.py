@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
 import sys
+import os
 from inotify_simple import INotify, flags
 
-LOG_DIR = '/srv/papermc/logs'
+SERVER_NAME = os.environ['server_name'].replace(' ', '_')
+LOG_DIR = f'/srv/{SERVER_NAME}/logs'
 LATEST_LOG = f'{LOG_DIR}/latest.log'
 
 class McDirWatcher:
